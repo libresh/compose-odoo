@@ -1,0 +1,18 @@
+db:
+  image: postgres
+  volumes:
+    - ./data:/var/lib/postgresql/data
+  env_file:
+   - ./.env
+app:
+  image: odoo
+  links:
+    - db
+  volumes:
+    - ./odoo:/var/lib/odoo
+web:
+  image: nginx
+  volumes:
+    - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  links:
+    - app
