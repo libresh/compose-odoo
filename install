@@ -3,6 +3,7 @@ set -e
 set -u
 set -x
 
+mkdir odoo
 chown 104:107 ./odoo/
 
 POSTGRES_PASSWORD=`tr -dc A-Za-z0-9_ < /dev/urandom | head -c 20 | xargs`
