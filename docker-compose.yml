@@ -1,11 +1,11 @@
 db:
-  image: postgres
+  image: postgres:9.4
   volumes:
     - ./data:/var/lib/postgresql/data
   env_file:
    - ./.env
 app:
-  image: odoo
+  image: odoo:8
   links:
     - db
   volumes:
@@ -17,4 +17,4 @@ web:
   links:
     - app
   environment:
-    - HOST
+    - VIRTUAL_HOST
